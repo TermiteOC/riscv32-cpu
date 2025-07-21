@@ -1,0 +1,8 @@
+# Ignora diretórios temporários do Quartus/ModelSim
+db/
+incremental_db/
+output_files/
+*.log
+*.rpt
+*.sof
+*.pof
