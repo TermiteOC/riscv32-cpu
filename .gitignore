@@ -1,8 +1,44 @@
-# Ignora diretórios temporários do Quartus/ModelSim
+# --- Quartus Build Directories ---
 db/
 incremental_db/
 output_files/
-*.log
-*.rpt
+
+# --- Quartus Output and Temporary Files ---
 *.sof
 *.pof
+*.rpt
+*.log
+*.chg
+*.eqn
+*.pin
+*.summary
+*.smsg
+*.csv
+*.qar
+*.jdi
+*.jam
+
+# --- ModelSim / Simulation Output ---
+*.wlf
+transcript
+vsim.dbg
+*.vcd
+*.vstf
+*.ini
+*.bak
+*.svf
+*.do.save
+modelsim.ini
+
+# --- Simulation Testbench Output ---
+*.dat
+*.sim
+*.mif
+
+# --- Temporary and Backup Files ---
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+.DS_Store
