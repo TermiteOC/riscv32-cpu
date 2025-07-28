@@ -39,7 +39,7 @@ architecture arch_1 of tb_ALU_32Bit is
             b    : in  std_logic_vector(31 downto 0); -- 2nd operand
             op   : in  std_logic_vector(3 downto 0);  -- operation selector
             zero : out std_logic;                     -- zero flag
-            res  : out std_logic_vector(31 downto 0); -- result
+            res  : out std_logic_vector(31 downto 0) -- result
         );
     end component;
   
@@ -54,11 +54,11 @@ begin
     -- DUT connection
     dut : ALU_32Bit
     port map (
-        a    => w_a;
-        b    => w_b;
-        op   => w_op;
-        zero => w_zero;
-        res  => w_res;
+        a    => w_a,
+        b    => w_b,
+        op   => w_op,
+        zero => w_zero,
+        res  => w_res
     );
 
     -- Stimulus process
@@ -99,32 +99,32 @@ begin
 
     -- Test AND operation: 0x0FF0FF0F AND 0x0F000FFF = 0x0F000F0F
     w_op <= OP_AND;
-    w_a  <= x"0FF0FF0F"
-    w_b  <= x"0F000FFF"
+    w_a  <= x"0FF0FF0F";
+    w_b  <= x"0F000FFF";
     wait for 1 ns;
     assert (w_res = x"0F000F0F" and w_zero = '0')
     report "Error: AND 0x0FF0FF0F AND 0x0F000FFF failed - Expected result = 0x0F000F0F, zero flag = 0" severity error;
 
     -- Test OR operation: 0xF00F00F0 OR 0xF0FFF000 = 0xF0FFF0F0
     w_op <= OP_OR;
-    w_a  <= x"F00F00F0"
-    w_b  <= x"F0FFF000"
+    w_a  <= x"F00F00F0";
+    w_b  <= x"F0FFF000";
     wait for 1 ns;
     assert (w_res = x"F0FFF0F0" and w_zero = '0')
     report "Error: OR 0xF00F00F0 OR 0xF0FFF000 failed - Expected result = 0xF0FFF0F0, zero flag = 0" severity error;
 
     -- Test NOR operation: 0x0000FFFF NOR 0x0F000FFF = 0xF0FF0000
     w_op <= OP_NOR;
-    w_a  <= x"0000FFFF"
-    w_b  <= x"0F000FFF"
+    w_a  <= x"0000FFFF";
+    w_b  <= x"0F000FFF";
     wait for 1 ns;
     assert (w_res = x"F0FF0000" and w_zero = '0')
     report "Error: NOR 0x0000FFFF NOR 0x0F000FFF failed - Expected result = 0xF0FF0000, zero flag = 0" severity error;
 
     -- Test NAND operation: 0xFFFFFFFF NAND 0x0FF0F00F = 0xF00F0FF0
     w_op <= OP_NAND;
-    w_a  <= x"FFFFFFFF"
-    w_b  <= x"0FF0F00F"
+    w_a  <= x"FFFFFFFF";
+    w_b  <= x"0FF0F00F";
     wait for 1 ns;
     assert (w_res = x"F00F0FF0" and w_zero = '0')
     report "Error: NAND 0xFFFFFFFF NAND 0x0FF0F00F failed - Expected result = 0xF00F0FF0, zero flag = 0" severity error;

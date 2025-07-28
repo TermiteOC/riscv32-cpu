@@ -22,7 +22,7 @@
 -- Simulation:
 -- Revision History:
 --   Rev 1.0 - 2025-07-26 - Initial implementation
---   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolon in entity port declaration
+--   Rev 1.1 - 2025-07-27 - Fixed syntax errors and unconstrained array comparison
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -42,7 +42,7 @@ end ALU_32Bit;
 architecture rtl of ALU_32Bit is
 
     -- 1-bit ALU component *****
-    entity ALU_1Bit is
+    component ALU_1Bit is
         port (
             a        : in  std_logic;                    -- 1st operand
             b        : in  std_logic;                    -- 2nd operand
@@ -53,9 +53,9 @@ architecture rtl of ALU_32Bit is
             op       : in  std_logic_vector(1 downto 0); -- operation selector
             res      : out std_logic;                    -- result
             cout     : out std_logic;                    -- carry-out from adder
-            set      : out std_logic;                    -- sets value if a is less than b (MSB)
+            set      : out std_logic                     -- sets value if a is less than b (MSB)
         );
-    end ALU_1Bit;
+    end component;
 
     -- Ripple-carry signal
     signal w_carry : std_logic_vector(32 downto 0);
@@ -67,7 +67,7 @@ architecture rtl of ALU_32Bit is
 begin
     -- Combinational Logic
     -- Zero flag is high when the ALU result equals 0
-    zero <= '1' when res = (others => '0') else '0';
+    zero <= '1' when res = (31 downto 0 => '0') else '0';
     
     -- SLT and SUB operations first carry-in equals 1
     w_carry(0) <= '1' when op = "0111" or op = "0110" else '0';
