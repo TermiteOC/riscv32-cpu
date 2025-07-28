@@ -29,6 +29,7 @@ vsim.dbg
 *.svf
 *.do.save
 modelsim.ini
+work/
 
 # --- Simulation Testbench Output ---
 *.dat
