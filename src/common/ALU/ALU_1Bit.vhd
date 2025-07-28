@@ -23,6 +23,7 @@
 -- Simulation: None (to be tested via ALU_32Bit simulation)
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
+--   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolon in entity port declaration
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -40,7 +41,7 @@ entity ALU_1Bit is
         op       : in  std_logic_vector(1 downto 0); -- operation selector
         res      : out std_logic;                    -- result
         cout     : out std_logic;                    -- carry-out from adder
-        set      : out std_logic;                    -- sets value if a is less than b (MSB)
+        set      : out std_logic                     -- sets value if a is less than b (MSB)
     );
 end ALU_1Bit;
 

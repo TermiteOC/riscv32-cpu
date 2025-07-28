@@ -22,6 +22,7 @@
 -- Simulation:
 -- Revision History:
 --   Rev 1.0 - 2025-07-26 - Initial implementation
+--   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolon in entity port declaration
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -34,7 +35,7 @@ entity ALU_32Bit is
         b    : in  std_logic_vector(31 downto 0); -- 2nd operand
         op   : in  std_logic_vector(3 downto 0);  -- operation selector
         zero : out std_logic;                     -- zero flag
-        res  : out std_logic_vector(31 downto 0); -- result
+        res  : out std_logic_vector(31 downto 0)  -- result
     );
 end ALU_32Bit;
 

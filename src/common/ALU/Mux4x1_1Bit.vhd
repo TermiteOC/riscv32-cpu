@@ -11,6 +11,7 @@
 -- Simulation: None (to be tested via ALU_32Bit simulation)
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
+--   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolon in entity port declaration
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -21,7 +22,7 @@ entity Mux4x1_1Bit is
     port (
         sel    : in  std_logic_vector(1 downto 0); -- selector
         inputs : in  std_logic_vector(3 downto 0); -- 4 inputs
-        output : out std_logic;                    -- 1 output
+        output : out std_logic                     -- 1 output
     );
 end Mux4x1_1Bit;
 
