@@ -24,7 +24,7 @@ entity Mux4x1_1Bit is
         output : out std_logic;                    -- 1 output
     );
 end Mux4x1_1Bit;
- 
+
 architecture rtl of Mux4x1_1Bit is
 begin
     process(sel, inputs)
