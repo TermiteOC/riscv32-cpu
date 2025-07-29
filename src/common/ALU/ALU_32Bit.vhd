@@ -19,7 +19,7 @@
 --   - The first carry-in is set to 1 only in the SLT and SUB operations.
 --   - The MSB set output is the LSB less input in a SLT operation.
 --   - Zero flag is high when res = x"00000000"
--- Simulation:
+-- Simulation: Verified via tb_ALU_32Bit testbench
 -- Revision History:
 --   Rev 1.0 - 2025-07-26 - Initial implementation
 --   Rev 1.1 - 2025-07-27 - Fixed syntax errors and unconstrained array comparison

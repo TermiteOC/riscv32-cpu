@@ -20,7 +20,7 @@
 --   - Less input and set output are only used in the SLT operation:
 --     - Set is computed in MSB and indicates a < b result
 --     - Less is used in LSB to select res = set
--- Simulation: None (to be tested via ALU_32Bit simulation)
+-- Simulation: Functionally verified via simulation of ALU_32Bit using tb_ALU_32Bit
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
 --   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolons in port map, and component declaration

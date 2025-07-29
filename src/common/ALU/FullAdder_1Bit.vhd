@@ -8,7 +8,7 @@
 -- Outputs: sum, cout
 -- Tool Compatibility: Quartus Prime 24.x or compatible synthesis tools
 -- Notes: None.
--- Simulation: None (to be tested via ALU_32Bit simulation)
+-- Simulation: Functionally verified via simulation of ALU_32Bit using tb_ALU_32Bit
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
 -------------------------------------------------------------------------------

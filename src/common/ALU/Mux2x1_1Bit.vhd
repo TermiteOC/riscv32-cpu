@@ -8,7 +8,7 @@
 -- Outputs: output
 -- Tool Compatibility: Quartus Prime 24.x or compatible synthesis tools
 -- Notes: If selector chooses an invalid input, defaults to '0'.
--- Simulation: None (to be tested via ALU_32Bit simulation)
+-- Simulation: Functionally verified via simulation of ALU_32Bit using tb_ALU_32Bit
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
 --   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolon in entity port declaration
