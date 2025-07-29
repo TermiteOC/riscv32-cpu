@@ -14,6 +14,8 @@
 -- Revision History:
 --   Rev 1.0 - 2025-07-27 - Initial testbench implementation
 --   Rev 1.1 - 2025-07-28 - Fixed incorrect operation encoding for SUB and SLT operations
+--   Rev 1.2 - 2025-07-29 - Corrected expected result in one SUB assertion and expected zero flag in one SLT assertion;
+--                          changed architecture name
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -23,7 +25,7 @@ use IEEE.numeric_std.all;
 entity tb_ALU_32Bit is
 end tb_ALU_32Bit;
 
-architecture arch_1 of tb_ALU_32Bit is
+architecture behavioral of tb_ALU_32Bit is
 
     -- Operation selector encoding
     constant OP_AND  : std_logic_vector(3 downto 0) := "0000";
@@ -92,11 +94,11 @@ begin
 
     -- Test SUB operation: 16 AND 7 = 0
     w_op <= OP_SUB;
-    w_a  <= std_logic_vector(to_signed(16, 32)); -- -100 as signed 32-bit
-    w_b  <= std_logic_vector(to_signed(7, 32));  -- 100 as signed 32-bit
+    w_a  <= std_logic_vector(to_signed(16, 32)); -- 16 as signed 32-bit
+    w_b  <= std_logic_vector(to_signed(7, 32));  -- 7 as signed 32-bit
     wait for 1 ns;
-    assert (w_res = std_logic_vector(to_signed(-200, 32)) and w_zero = '0')
-    report "Error: SUB -100 - 100 failed - Expected result = -200, zero flag = 0" severity error;
+    assert (w_res = std_logic_vector(to_signed(9, 32)) and w_zero = '0')
+    report "Error: SUB 16 - 7 failed - Expected result = 9, zero flag = 0" severity error;
 
     -- Test AND operation: 0x0FF0FF0F AND 0x0F000FFF = 0x0F000F0F
     w_op <= OP_AND;
@@ -151,8 +153,8 @@ begin
     w_a  <= std_logic_vector(to_signed(11, 32)); -- 11 as signed 32-bit
     w_b  <= std_logic_vector(to_signed(6, 32));  -- 6 as signed 32-bit
     wait for 1 ns;
-    assert (w_res = std_logic_vector(to_signed(0, 32)) and w_zero = '0')
-    report "Error: SLT 11 less than 6 failed - Expected result = 0, zero flag = 0" severity error;
+    assert (w_res = std_logic_vector(to_signed(0, 32)) and w_zero = '1')
+    report "Error: SLT 11 less than 6 failed - Expected result = 0, zero flag = 1" severity error;
 
     -- Clear inputs
     w_op <= (others => '0');
