@@ -24,6 +24,7 @@
 -- Revision History:
 --   Rev 1.0 - 2025-07-24 - Initial implementation
 --   Rev 1.1 - 2025-07-27 - Syntax fix: removed extra semicolons in port map, and component declaration
+--   Rev 1.2 - 2025-07-28 - Fixed missing assignment of carry-out (cout) output port
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -114,6 +115,9 @@ begin
 
     -- Set is 1 if the sign of the sum is negative, but if overflow is 1, the sign inverts
     set <= w_sum xor w_overflow;
+    
+    -- Assign internal carry-out to output port
+    cout <= w_cout;
 
     -- Mux inputs indexed as: 0 = AND, 1 = OR, 2 = SUM, 3 = SLT
     w_op_mux_in(0) <= w_and;
