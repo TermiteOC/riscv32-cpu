@@ -13,6 +13,7 @@
 --   - Simulated in Intel ModelSim 2024 with waveform inspection.
 -- Revision History:
 --   Rev 1.0 - 2025-07-27 - Initial testbench implementation
+--   Rev 1.1 - 2025-07-28 - Fixed incorrect operation encoding for SUB and SLT operations
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -28,10 +29,10 @@ architecture arch_1 of tb_ALU_32Bit is
     constant OP_AND  : std_logic_vector(3 downto 0) := "0000";
     constant OP_OR   : std_logic_vector(3 downto 0) := "0001";
     constant OP_ADD  : std_logic_vector(3 downto 0) := "0010";
-    constant OP_SUB  : std_logic_vector(3 downto 0) := "0011";
+    constant OP_SUB  : std_logic_vector(3 downto 0) := "0110";
     constant OP_NOR  : std_logic_vector(3 downto 0) := "1100";
     constant OP_NAND : std_logic_vector(3 downto 0) := "1101";
-    constant OP_SLT  : std_logic_vector(3 downto 0) := "0110";
+    constant OP_SLT  : std_logic_vector(3 downto 0) := "0111";
 
     component ALU_32Bit is
         port (
