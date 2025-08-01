@@ -8,7 +8,7 @@
 -- Outputs: res
 -- Tool Compatibility: Quartus Prime 24.x or compatible synthesis tools
 -- Notes: If selector chooses an invalid input, defaults to 0.
--- Simulation: To be tested via tb_Mux2x1_32Bit
+-- Simulation: Verified via tb_Mux2x1_32Bit
 -- Revision History:
 --   Rev 1.0 - 2025-07-30 - Initial implementation
 -------------------------------------------------------------------------------
