@@ -8,7 +8,7 @@ if {![file exists work]} {
 vmap work work
 
 # Compile source files
-vcom -2008 ../src/common/Multiplexer/Mux2x1_32Bit.vhd
+vcom -2008 ../src/common/multiplexer/Mux2x1_32Bit.vhd
 
 # Compile testbench file
 vcom -2008 common/tb/tb_Mux2x1_32Bit.vhd

@@ -8,8 +8,8 @@ if {![file exists work]} {
 vmap work work
 
 # Compile source files
-vcom -2008 ../src/common/ALU/FullAdder_1Bit.vhd
-vcom -2008 ../src/common/Adder/Adder_32Bit.vhd
+vcom -2008 ../src/common/components/FullAdder_1Bit.vhd
+vcom -2008 ../src/common/adder/Adder_32Bit.vhd
 
 # Compile testbench file
 vcom -2008 common/tb/tb_Adder_32Bit.vhd
