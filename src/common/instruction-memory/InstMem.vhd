@@ -15,6 +15,7 @@
 -- Simulation: To be verified via tb_InstMem testbench
 -- Revision History:
 --   Rev 1.0 - 2025-08-11 - Initial implementation
+--   Rev 1.1 - 2025-08-12 - Changed address input to receive binary value (std_logic_vector)
 ------------------------------------------------------------------------------- 
 
 library ieee;
@@ -31,7 +32,7 @@ entity InstMem is
     port 
     (
         clk     : in std_logic;                                   -- clock
-        addr    : in natural range 0 to 2**ADDR_WIDTH - 1;        -- instruction address
+        addr    : in std_logic_vector((ADDR_WIDTH - 1) downto 0); -- instruction address
         q       : out std_logic_vector((DATA_WIDTH - 1) downto 0) -- instruction output
     );
 end InstMem;
@@ -54,7 +55,7 @@ begin
     process(clk)
     begin
         if(rising_edge(clk)) then
-            q <= rom(addr);
+            q <= rom(to_integer(unsigned(addr)));
         end if;
     end process;
 end rtl;
