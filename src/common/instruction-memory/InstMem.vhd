@@ -12,12 +12,12 @@
 --   - Default data width parameter matches 32-bit RISC-V architecture.
 --   - Default address width is 10 (1024 total addresses).
 --   - ROM contents initialized to zero; can be modified for test programs.
--- Simulation: To be verified via tb_InstMem testbench
+-- Simulation: Verified via tb_InstMem testbench
 -- Revision History:
 --   Rev 1.0 - 2025-08-11 - Initial implementation
 --   Rev 1.1 - 2025-08-12 - Changed address input to receive binary value (std_logic_vector);
 --                          initializing with basic RARS program for simulation purposes
-------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
