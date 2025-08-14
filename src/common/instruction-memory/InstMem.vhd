@@ -1,14 +1,15 @@
 -------------------------------------------------------------------------------
 -- Module: InstMem
--- Description: Single-Port ROM for instruction storage.
+-- Description: Asynchronous single-Port ROM for instruction storage.
 -- Author: Levy Elmescany
 -- Date: 2025-08-11
 -- License: MIT
--- Inputs: clk, addr
+-- Inputs: addr
 -- Outputs: q
 -- Tool Compatibility: Quartus Prime 24.x or compatible synthesis tools
 -- Notes: 
 --   - Implements memory as a 2D array of words.
+--   - Output reflects the contents at the address port immediately after the address changes.
 --   - Default data width parameter matches 32-bit RISC-V architecture.
 --   - Default address width is 10 (1024 total addresses).
 --   - ROM contents initialized to zero; can be modified for test programs.
@@ -17,6 +18,8 @@
 --   Rev 1.0 - 2025-08-11 - Initial implementation
 --   Rev 1.1 - 2025-08-12 - Changed address input to receive binary value (std_logic_vector);
 --                          initializing with basic RARS program for simulation purposes
+--   Rev 1.2 - 2025-08-14 - Modified to asynchronous ROM: output updates immediately with 
+--                          address changes, no clock required;
 -------------------------------------------------------------------------------
 
 library ieee;
@@ -32,7 +35,6 @@ entity InstMem is
 
     port 
     (
-        clk     : in std_logic;                                   -- clock
         addr    : in std_logic_vector((ADDR_WIDTH - 1) downto 0); -- instruction address
         q       : out std_logic_vector((DATA_WIDTH - 1) downto 0) -- instruction output
     );
@@ -67,10 +69,6 @@ architecture rtl of InstMem is
     signal rom : memory_t := init_rom;
 
 begin
-    process(clk)
-    begin
-        if(rising_edge(clk)) then
-            q <= rom(to_integer(unsigned(addr)));
-        end if;
-    end process;
+    -- Update instruction output with corresponding instruction from address input
+    q <= rom(to_integer(unsigned(addr)));
 end rtl;
