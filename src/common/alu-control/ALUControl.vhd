@@ -16,7 +16,7 @@
 --     - 01 -> Branch (BEQ)
 --     - 10 -> R-type instruction
 --     - 11 -> I-type instruction
--- Simulation: To be verified by tb_ALUControl testbench
+-- Simulation: Verified via tb_ALUControl testbench
 -- Revision History:
 --   Rev 1.0 - 2026-01-03 - Initial implementation
 -------------------------------------------------------------------------------
