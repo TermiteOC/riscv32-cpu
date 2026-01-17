@@ -14,6 +14,8 @@
 --   - Simulated in Intel ModelSim 2024 with waveform inspection.
 -- Revision History:
 --   Rev 1.0 - 2026-01-05 - Initial testbench implementation
+--   Rev 1.1 - 2026-01-16 - Fixed wrong SLT operation encoding and test case
+--                          error message involving the instruction
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -29,7 +31,7 @@ architecture behavioral of tb_ALUControl is
     constant ALU_AND     : std_logic_vector(3 downto 0) := "0000";
     constant ALU_OR      : std_logic_vector(3 downto 0) := "0001";
     constant ALU_ADD     : std_logic_vector(3 downto 0) := "0010";
-    constant ALU_SLT     : std_logic_vector(3 downto 0) := "0011";
+    constant ALU_SLT     : std_logic_vector(3 downto 0) := "0111";
     constant ALU_SUB     : std_logic_vector(3 downto 0) := "0110";
     constant ALU_DEFAULT : std_logic_vector(3 downto 0) := "1111";
 
@@ -131,7 +133,7 @@ begin
         w_f3     <= "010";
         wait for 1 ns;
         assert (w_sel = ALU_SLT)
-        report "Error: Test case 8 - Expected selected operation = 0011" severity error;
+        report "Error: Test case 8 - Expected selected operation = 0111" severity error;
 
         -- Test case 9:
         -- OR instruction

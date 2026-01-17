@@ -19,6 +19,7 @@
 -- Simulation: Verified via tb_ALUControl testbench
 -- Revision History:
 --   Rev 1.0 - 2026-01-03 - Initial implementation
+--   Rev 1.1 - 2026-01-16 - Fixed wrong SLT operation encoding
 -------------------------------------------------------------------------------
 
 library IEEE;
@@ -40,7 +41,7 @@ architecture rtl of ALUControl is
     constant ALU_AND     : std_logic_vector(3 downto 0) := "0000";
     constant ALU_OR      : std_logic_vector(3 downto 0) := "0001";
     constant ALU_ADD     : std_logic_vector(3 downto 0) := "0010";
-    constant ALU_SLT     : std_logic_vector(3 downto 0) := "0011";
+    constant ALU_SLT     : std_logic_vector(3 downto 0) := "0111";
     constant ALU_SUB     : std_logic_vector(3 downto 0) := "0110";
     constant ALU_DEFAULT : std_logic_vector(3 downto 0) := "1111";
 
