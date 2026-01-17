@@ -11,7 +11,11 @@
 -- Outputs: imm
 -- Tool Compatibility: Quartus Prime 24.x or compatible synthesis tools
 -- Notes: 
---   - Received B-type instruction immediate is always multiple of two.
+--   - B-type immediates are 2-byte aligned by definition in the RISC-V ISA.
+--   - To generate word-aligned (4-byte-aligned) branch targets, the immediate
+--     is shifted left by one bit and added to the current PC.
+--   - This shift is performed outside the immediate generator, to keep module 
+--     responsibilities separated.
 --   - If opcode is incompatible, defaults to '0'.
 -- Simulation: Verified via tb_ImmGen
 -- Revision History:
